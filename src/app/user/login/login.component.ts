@@ -24,7 +24,7 @@ export class LoginComponent {
 ) { }
 
 ngOnInit(): void {
-  this.createUser();
+  this.login();
 
 }
 
@@ -36,7 +36,7 @@ ngOnInit(): void {
     //})
   }
 
-  createUser(): void{
+  login(): void{
     var val = {
       
       email:this.email,
@@ -44,8 +44,23 @@ ngOnInit(): void {
       usertype: this.usertype
     };
 
-      this.userService.createUser(val).subscribe(res =>{
-        console.log(val)
-      })
+    this.userService.createUser(val).subscribe(res =>{
+      console.log(val)
+    })
+
+
+    switch (this.usertype) {
+
+      case 1:
+          console.log("It is a Monday.");
+          break;
+      case 2:
+          console.log("It is a Tuesday.");
+          break;    
+      default: // redirect to home
+          console.log("No such day exists!");
+          break;
+    
+        }
   }
 }

@@ -14,9 +14,9 @@ export class LoginComponent {
   submitted = false;
 
   user: any;
-  firstname:string = "takeAlot";
-  Lastname: string ="Mecer";
+  password:string = "";
   email: string ="company@fun.com";
+  usertype: number = 0;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,9 +38,10 @@ ngOnInit(): void {
 
   createUser(): void{
     var val = {
-      firstname:this.firstname,
-      lastname:this.Lastname,
-      email:this.email
+      
+      email:this.email,
+      password:this.password,
+      usertype: this.usertype
     };
 
       this.userService.createUser(val).subscribe(res =>{
